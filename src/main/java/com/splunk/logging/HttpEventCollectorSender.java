@@ -268,6 +268,13 @@ final class HttpEventCollectorSender extends TimerTask implements HttpEventColle
         final Object parsedMessage = this.messageFormat.parse(eventInfo.getMessage());
         
         // event body
+
+        // "log-message" = event contains only the formatted log message.
+        if ("log-message".equals(this.type)) {
+            event.put("event", parsedMessage);
+            return event.toString();
+        }
+
         JSONObject body = new JSONObject();
         putIfPresent(body, "severity", eventInfo.getSeverity());
         putIfPresent(body, "message", parsedMessage);

@@ -84,6 +84,8 @@ LOGGER.info("hello world");
 #### Message Format
 An event message format could be configured for HTTP event appender in logging framework configuration. It could have one of the two possible values - text, json. It is an optional property with default value as 'text'. Message format 'json' is used where the event message could be in json format.
 
+By default, the event will be a json payload with information such as `severity`, `message`, `logger` and more. If all you want is the log message itself, use `<type>log-message</type>` 
+
 For more information, see http://dev.splunk.com/view/SP-CAAAE2K.
 
 # License
